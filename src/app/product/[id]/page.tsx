@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { products } from '@/data/products';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
+import { Product } from '@/data/products';
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -22,8 +24,25 @@ export async function generateStaticParams() {
   ];
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
-  const product = products.find(p => p.id === params.id);
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { id } = await params;
+
+  let product: Product | null = null;
+
+  try {
+    const productDoc = await getDoc(doc(db, 'products', id));
+    if (productDoc.exists()) {
+      product = { id: productDoc.id, ...productDoc.data() } as Product;
+    }
+  } catch (error) {
+    console.error('Error fetching product:', error);
+  }
+
+  // Fallback to static data if not found in database
+  if (!product) {
+    const { products: staticProducts } = await import('@/data/products');
+    product = staticProducts.find(p => p.id === id) || null;
+  }
 
   if (!product) {
     notFound();

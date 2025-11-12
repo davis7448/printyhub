@@ -1,8 +1,47 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { products } from '@/data/products';
+import { useState, useEffect } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
+import { Product } from '@/data/products';
 
 export default function ShopPage() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const productsCollection = collection(db, 'products');
+        const productsSnapshot = await getDocs(productsCollection);
+        const productsList = productsSnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        })) as Product[];
+        setProducts(productsList);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        // Fallback to static data if Firebase fails
+        const { products: staticProducts } = await import('@/data/products');
+        setProducts(staticProducts);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) {
+    return (
+      <main className="min-h-screen bg-printy-white flex items-center justify-center">
+        <div className="text-printy-carbon">Cargando productos...</div>
+      </main>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-printy-white">
       {/* Header */}
@@ -29,12 +68,21 @@ export default function ShopPage() {
                 className="group bg-printy-white border border-printy-stone hover:border-printy-military transition-colors focus-ring"
               >
                 <div className="aspect-square bg-printy-stone relative overflow-hidden">
-                  {/* Placeholder for product image */}
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-printy-carbon font-body">
-                      {product.name} - {product.color}
-                    </span>
-                  </div>
+                  {/* Product image */}
+                  {product.images && product.images.length > 0 ? (
+                    <Image
+                      src={product.images[0]}
+                      alt={product.name}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="text-printy-carbon font-body">
+                        {product.name} - {product.color}
+                      </span>
+                    </div>
+                  )}
                   {/* Overlay on hover */}
                   <div className="absolute inset-0 bg-printy-military/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span className="text-printy-military font-league-spartan uppercase tracking-wider text-sm">
