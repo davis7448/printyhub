@@ -1,26 +1,34 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    font-family: Inter, system-ui, sans-serif;
   }
+
+  body {
+    @apply text-gray-900 bg-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply uppercase tracking-wider;
+  }
+
+  .font-heading-xl { @apply text-4xl font-bold; }
+  .font-heading-lg { @apply text-3xl font-bold; }
+  .font-heading-md { @apply text-2xl font-bold; }
+  .font-heading-sm { @apply text-xl font-bold; }
+
+  .font-body-lg { @apply text-lg; }
+  .font-body { @apply text-base; }
+  .font-body-sm { @apply text-sm; }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .text-shadow-none {
+    text-shadow: none;
+  }
+
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-white;
+  }
 }
