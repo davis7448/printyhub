@@ -4,24 +4,23 @@ import Image from 'next/image';
 export default function Home() {
   return (
     <main className="min-h-screen">
-      {/* Hero Section */}
+      {/* Hero Section - Video Background */}
       <section className="relative h-screen flex items-center justify-center bg-printy-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-printy-smoke to-printy-stone opacity-50"></div>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/images/1111(1).mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-          <div className="mb-8">
-            <div className="w-80 h-96 mx-auto bg-gray-200 rounded-lg mb-8 overflow-hidden relative">
-              <Image
-                src="/images/tshirt.jpg"
-                alt="Modelo con prenda PrintyHub"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-          <h1 className="font-heading-xl text-printy-black mb-6">
+          <h1 className="font-heading-xl text-white mb-6">
             BLANKS PREMIUM PARA TU MARCA
           </h1>
-          <p className="font-body-lg text-printy-carbon mb-8 max-w-2xl mx-auto">
+          <p className="font-body-lg text-white/90 mb-8 max-w-2xl mx-auto">
             Descubre nuestra colección de blanks premium hechos con los mejores materiales.
             Perfectos para personalización con técnicas de impresión de alta calidad.
           </p>
@@ -34,7 +33,7 @@ export default function Home() {
             </Link>
             <Link
               href="/apply"
-              className="border-2 border-printy-military text-printy-military px-8 py-4 font-league-spartan uppercase tracking-wider hover:bg-printy-military hover:text-printy-white transition-colors focus-ring"
+              className="border-2 border-white text-white px-8 py-4 font-league-spartan uppercase tracking-wider hover:bg-white hover:text-printy-military transition-colors focus-ring"
             >
               Aplicar a B2B
             </Link>
@@ -50,7 +49,7 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-full h-80 bg-gray-200 rounded-lg mb-4 overflow-hidden relative">
+              <div className="w-full h-96 bg-gray-200 rounded-lg mb-4 overflow-hidden relative">
                 <Image
                   src="/images/tshirt.jpg"
                   alt="T-Shirt Premium"
@@ -64,7 +63,7 @@ export default function Home() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-full h-80 bg-gray-200 rounded-lg mb-4 overflow-hidden relative">
+              <div className="w-full h-96 bg-gray-200 rounded-lg mb-4 overflow-hidden relative">
                 <Image
                   src="/images/HOODIE.png"
                   alt="Hoodie Premium"
@@ -78,7 +77,7 @@ export default function Home() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-full h-80 bg-gray-200 rounded-lg mb-4 overflow-hidden relative">
+              <div className="w-full h-96 bg-gray-200 rounded-lg mb-4 overflow-hidden relative">
                 <Image
                   src="/images/TANKTOPS.png"
                   alt="Tank Top Premium"
@@ -95,22 +94,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Servicios Section */}
+      {/* Servicios Section - Larger Images */}
       <section className="py-20 px-6 bg-printy-smoke">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-heading-lg text-printy-black text-center mb-12">
             SERVICIOS
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {[
-              { name: 'DTF', desc: 'Impresión directa a tela', icon: '🖨️', img: '/images/DTF.png' },
-              { name: 'DTG', desc: 'Impresión digital directa', icon: '🎨', img: '/images/DTG.png' },
-              { name: 'Bordado', desc: 'Bordado profesional', icon: '🧵', img: '/images/BORDADO.png' },
-              { name: 'Tinte', desc: 'Tinte personalizado', icon: '🎨', img: '/images/TINTE.png' },
-              { name: 'Etiquetado', desc: 'Etiquetas a medida', icon: '🏷️', img: '/images/ETIQEUTADO.png' }
+              { name: 'DTF', desc: 'Impresión directa a tela', img: '/images/DTF.png' },
+              { name: 'DTG', desc: 'Impresión digital directa', img: '/images/DTG.png' },
+              { name: 'Bordado', desc: 'Bordado profesional', img: '/images/BORDADO.png' },
+              { name: 'Tinte', desc: 'Tinte personalizado', img: '/images/TINTE.png' },
+              { name: 'Etiquetado', desc: 'Etiquetas a medida', img: '/images/ETIQEUTADO.png' }
             ].map((service) => (
-              <div key={service.name} className="bg-printy-white p-6 text-center rounded-lg hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 mx-auto mb-3 relative">
+              <div key={service.name} className="bg-printy-white p-6 text-center rounded-lg hover:shadow-lg transition-shadow h-full">
+                <div className="w-full h-40 mb-4 relative">
                   <Image
                     src={service.img}
                     alt={service.name}
@@ -132,14 +131,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Proceso & Tiempos Section */}
+      {/* Proceso & Tiempos Section - With Images */}
       <section className="py-20 px-6 bg-printy-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-heading-lg text-printy-black text-center mb-12">
             PROCESO & TIEMPOS
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="text-center">
+              <div className="w-full h-64 mb-6 relative">
+                <Image
+                  src="/images/DISEÑO.png"
+                  alt="Diseño"
+                  fill
+                  className="object-contain"
+                />
+              </div>
               <div className="w-16 h-16 bg-printy-military rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-printy-white font-heading-sm text-xl">1</span>
               </div>
@@ -149,6 +156,14 @@ export default function Home() {
               </p>
             </div>
             <div className="text-center">
+              <div className="w-full h-64 mb-6 relative">
+                <Image
+                  src="/images/PRODUCCION.png"
+                  alt="Producción"
+                  fill
+                  className="object-contain"
+                />
+              </div>
               <div className="w-16 h-16 bg-printy-military rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-printy-white font-heading-sm text-xl">2</span>
               </div>
@@ -158,6 +173,14 @@ export default function Home() {
               </p>
             </div>
             <div className="text-center">
+              <div className="w-full h-64 mb-6 relative">
+                <Image
+                  src="/images/DESPACHO.png"
+                  alt="Despacho"
+                  fill
+                  className="object-contain"
+                />
+              </div>
               <div className="w-16 h-16 bg-printy-military rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-printy-white font-heading-sm text-xl">3</span>
               </div>
