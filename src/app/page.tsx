@@ -114,7 +114,7 @@ export default function Home() {
                     src={service.img}
                     alt={service.name}
                     fill
-                    className="object-contain rounded-lg"
+                    className="object-contain rounded-full"
                   />
                 </div>
                 <h3 className="font-heading-sm text-printy-black mb-2">{service.name}</h3>
