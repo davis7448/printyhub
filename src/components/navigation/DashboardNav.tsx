@@ -52,7 +52,7 @@ export default function DashboardNav() {
                 onClick={() => setShowUserMenu(!showUserMenu)}
                 className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-printy-deep-blue transition-colors"
               >
-                <span className="hidden md:block">{user.name || user.email}</span>
+                <span className="hidden md:block">{user.contactName || user.email}</span>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -61,7 +61,7 @@ export default function DashboardNav() {
               {showUserMenu && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-50 text-gray-800">
                   <div className="px-4 py-2 border-b">
-                    <p className="text-sm font-medium">{user.name}</p>
+                    <p className="text-sm font-medium">{user.contactName}</p>
                     <p className="text-xs text-gray-500">{user.email}</p>
                     <span className="inline-block mt-1 px-2 py-0.5 text-xs rounded bg-printy-military text-white">
                       {user.role}
