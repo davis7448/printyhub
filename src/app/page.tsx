@@ -5,13 +5,17 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center bg-printy-white">
+      <section className="relative h-screen flex items-center justify-center bg-printy-white overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-printy-smoke to-printy-stone opacity-50"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <div className="mb-8">
-            {/* Placeholder for hero image - replace with actual model image */}
-            <div className="w-80 h-96 mx-auto bg-printy-stone rounded-lg mb-8 flex items-center justify-center">
-              <span className="text-printy-carbon font-body">Hero Image</span>
+            <div className="w-80 h-96 mx-auto bg-gray-200 rounded-lg mb-8 overflow-hidden relative">
+              <Image
+                src="/images/tshirt.jpg"
+                alt="Modelo con prenda PrintyHub"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
           <h1 className="font-heading-xl text-printy-black mb-6">
@@ -46,8 +50,13 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-full h-64 bg-printy-stone rounded-lg mb-4 flex items-center justify-center">
-                <span className="text-printy-carbon font-body">T-Shirts</span>
+              <div className="w-full h-80 bg-gray-200 rounded-lg mb-4 overflow-hidden relative">
+                <Image
+                  src="/images/tshirt.jpg"
+                  alt="T-Shirt Premium"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-300"
+                />
               </div>
               <h3 className="font-heading-md text-printy-black mb-2">T-SHIRTS</h3>
               <p className="font-body text-printy-carbon">
@@ -55,8 +64,13 @@ export default function Home() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-full h-64 bg-printy-stone rounded-lg mb-4 flex items-center justify-center">
-                <span className="text-printy-carbon font-body">Hoodies</span>
+              <div className="w-full h-80 bg-gray-200 rounded-lg mb-4 overflow-hidden relative">
+                <Image
+                  src="/images/HOODIE.png"
+                  alt="Hoodie Premium"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-300"
+                />
               </div>
               <h3 className="font-heading-md text-printy-black mb-2">HOODIES</h3>
               <p className="font-body text-printy-carbon">
@@ -64,8 +78,13 @@ export default function Home() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-full h-64 bg-printy-stone rounded-lg mb-4 flex items-center justify-center">
-                <span className="text-printy-carbon font-body">Tank Tops</span>
+              <div className="w-full h-80 bg-gray-200 rounded-lg mb-4 overflow-hidden relative">
+                <Image
+                  src="/images/TANKTOPS.png"
+                  alt="Tank Top Premium"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-300"
+                />
               </div>
               <h3 className="font-heading-md text-printy-black mb-2">TANK TOPS</h3>
               <p className="font-body text-printy-carbon">
@@ -84,20 +103,28 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {[
-              { name: 'DTF', desc: 'Impresión directa a tela de alta calidad' },
-              { name: 'DTG', desc: 'Impresión digital directa en prenda' },
-              { name: 'Bordado', desc: 'Bordado computarizado profesional' },
-              { name: 'Tinte', desc: 'Tinte directo personalizado' },
-              { name: 'Etiquetado', desc: 'Etiquetas personalizadas' }
+              { name: 'DTF', desc: 'Impresión directa a tela', icon: '🖨️', img: '/images/DTF.png' },
+              { name: 'DTG', desc: 'Impresión digital directa', icon: '🎨', img: '/images/DTG.png' },
+              { name: 'Bordado', desc: 'Bordado profesional', icon: '🧵', img: '/images/BORDADO.png' },
+              { name: 'Tinte', desc: 'Tinte personalizado', icon: '🎨', img: '/images/TINTE.png' },
+              { name: 'Etiquetado', desc: 'Etiquetas a medida', icon: '🏷️', img: '/images/ETIQEUTADO.png' }
             ].map((service) => (
-              <div key={service.name} className="bg-printy-white p-6 text-center rounded-lg">
+              <div key={service.name} className="bg-printy-white p-6 text-center rounded-lg hover:shadow-lg transition-shadow">
+                <div className="w-16 h-16 mx-auto mb-3 relative">
+                  <Image
+                    src={service.img}
+                    alt={service.name}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
                 <h3 className="font-heading-sm text-printy-black mb-2">{service.name}</h3>
-                <p className="font-body-sm text-printy-carbon mb-4">{service.desc}</p>
+                <p className="font-body-sm text-printy-carbon mb-3">{service.desc}</p>
                 <Link
                   href="/services"
                   className="text-printy-military font-league-spartan uppercase tracking-wider text-sm hover:underline focus-ring"
                 >
-                  Cotizar
+                  Ver más
                 </Link>
               </div>
             ))}
@@ -114,7 +141,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-printy-military rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-printy-white font-heading-sm">1</span>
+                <span className="text-printy-white font-heading-sm text-xl">1</span>
               </div>
               <h3 className="font-heading-md text-printy-black mb-2">DISEÑO</h3>
               <p className="font-body text-printy-carbon">
@@ -123,7 +150,7 @@ export default function Home() {
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-printy-military rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-printy-white font-heading-sm">2</span>
+                <span className="text-printy-white font-heading-sm text-xl">2</span>
               </div>
               <h3 className="font-heading-md text-printy-black mb-2">PRODUCCIÓN</h3>
               <p className="font-body text-printy-carbon">
@@ -132,7 +159,7 @@ export default function Home() {
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-printy-military rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-printy-white font-heading-sm">3</span>
+                <span className="text-printy-white font-heading-sm text-xl">3</span>
               </div>
               <h3 className="font-heading-md text-printy-black mb-2">ENTREGA</h3>
               <p className="font-body text-printy-carbon">
