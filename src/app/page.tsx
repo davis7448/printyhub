@@ -139,12 +139,13 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="text-center">
-              <div className="w-full h-64 mb-6 relative">
+              <div className="w-full h-48 mb-6 relative flex items-center justify-center">
                 <Image
                   src="/images/DISEÑO.png"
                   alt="Diseño"
-                  fill
-                  className="object-contain"
+                  width={180}
+                  height={180}
+                  className="object-contain rounded-full shadow-lg"
                 />
               </div>
               <div className="w-16 h-16 bg-printy-military rounded-full flex items-center justify-center mx-auto mb-4">
@@ -156,12 +157,13 @@ export default function Home() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-full h-64 mb-6 relative">
+              <div className="w-full h-48 mb-6 relative flex items-center justify-center">
                 <Image
                   src="/images/PRODUCCION.png"
                   alt="Producción"
-                  fill
-                  className="object-contain"
+                  width={180}
+                  height={180}
+                  className="object-contain rounded-full shadow-lg"
                 />
               </div>
               <div className="w-16 h-16 bg-printy-military rounded-full flex items-center justify-center mx-auto mb-4">
@@ -173,12 +175,13 @@ export default function Home() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-full h-64 mb-6 relative">
+              <div className="w-full h-48 mb-6 relative flex items-center justify-center">
                 <Image
                   src="/images/DESPACHO.png"
                   alt="Despacho"
-                  fill
-                  className="object-contain"
+                  width={180}
+                  height={180}
+                  className="object-contain rounded-full shadow-lg"
                 />
               </div>
               <div className="w-16 h-16 bg-printy-military rounded-full flex items-center justify-center mx-auto mb-4">
