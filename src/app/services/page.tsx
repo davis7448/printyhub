@@ -117,13 +117,6 @@ export default function ServicesPage() {
                     {service.turnaround}
                   </p>
                 </div>
-
-                <Link
-                  href="/apply"
-                  className="w-full bg-printy-military text-printy-white px-6 py-3 font-league-spartan uppercase tracking-wider text-sm hover:bg-printy-military/90 transition-colors focus-ring text-center block"
-                >
-                  Cotizar {service.name}
-                </Link>
               </div>
             ))}
           </div>
@@ -140,20 +133,6 @@ export default function ServicesPage() {
             Contáctanos para discutir proyectos especiales, técnicas combinadas
             o soluciones personalizadas para tus necesidades específicas.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/apply"
-              className="bg-printy-military text-printy-white px-8 py-4 font-league-spartan uppercase tracking-wider hover:bg-printy-military/90 transition-colors focus-ring"
-            >
-              Solicitar Cotización
-            </Link>
-            <Link
-              href="/turnaround"
-              className="border-2 border-printy-military text-printy-military px-8 py-4 font-league-spartan uppercase tracking-wider hover:bg-printy-military hover:text-printy-white transition-colors focus-ring"
-            >
-              Ver Tiempos de Entrega
-            </Link>
-          </div>
         </div>
       </section>
     </main>
