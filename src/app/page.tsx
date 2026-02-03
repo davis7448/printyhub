@@ -108,13 +108,13 @@ export default function Home() {
               { name: 'Tinte', desc: 'Tinte personalizado', img: '/images/TINTE.png' },
               { name: 'Etiquetado', desc: 'Etiquetas a medida', img: '/images/ETIQEUTADO.png' }
             ].map((service) => (
-              <div key={service.name} className="bg-printy-white p-6 text-center rounded-lg hover:shadow-lg transition-shadow h-full">
+              <div key={service.name} className="bg-printy-white p-6 text-center rounded-xl hover:shadow-lg transition-shadow h-full">
                 <div className="w-full h-40 mb-4 relative">
                   <Image
                     src={service.img}
                     alt={service.name}
                     fill
-                    className="object-contain"
+                    className="object-contain rounded-lg"
                   />
                 </div>
                 <h3 className="font-heading-sm text-printy-black mb-2">{service.name}</h3>
